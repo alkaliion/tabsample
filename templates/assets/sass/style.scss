@@ -1,0 +1,105 @@
+
+// responsive
+$responsive:       true;
+$break-sp:         960px;
+$break-pc:         960px;
+
+// color:
+$main:       #02328D;
+
+
+// font-size
+@mixin font-size($size, $base: 16) {
+  font-size: $size + px;
+  font-size: ($size / $base) + rem;
+}
+
+// media queries
+@mixin media ($media) {
+  @if $responsive == true {
+    @if $media == sp {
+      @media only screen and (max-width: $break-sp) {
+        @content;
+      }
+    }
+    @if $media == pc {
+      @media only screen and (min-width: $break-pc) {
+        @content;
+      }
+    }
+  }
+}
+
+//
+@import "_normalize.scss";
+
+.l-content{
+  width: 960px;
+  margin: 0 auto;
+  @include media(sp) {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+}
+
+nav{
+  ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li{
+      display: inline-block;
+      a{
+        color:white;
+        padding: 8px;
+        display: block;
+        border-radius: 4px 4px 0 0;
+        text-decoration: none;
+      }
+    }
+
+    li:nth-child(1){
+      a{
+        background: lighten( $main, 10% );
+      }
+    }
+    li:nth-child(2){
+      a{
+        background: lighten( $main, 30% );
+      }
+      }
+    li:nth-child(3){
+      a{
+        background: lighten( $main, 50% );
+      }
+    }
+  }
+}
+.content{
+  position:relative;
+}
+.tab{
+  width: 100% ;
+  box-sizing: border-box;
+  padding: 20px;
+  color: white;
+  position: absolute;
+  top:0;
+  left: 0;
+  display: none;
+}
+
+.tab:target{
+  display: block;
+}
+#tab1{
+  background: lighten( $main, 10% );
+  display: block;
+}
+#tab2{
+  background: lighten( $main, 30% );
+}
+#tab3{
+  background: lighten( $main, 50% );
+}
